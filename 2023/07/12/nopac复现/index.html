@@ -13,7 +13,7 @@
 <meta property="og:site_name" content="Hexo">
 <meta property="og:description" content="影响范围CVE-2021-42287: Windows Server 2012 R2 (Server Core installation) Windows Server 2012 R2 Windows Server 2012 (Server Core installation) Windows Server 2008 R2 for x64-based Systems Service Pack 1(">
 <meta property="og:locale" content="en_US">
-<meta property="og:image" content="http://example.com/2023/07/12/nopac%E5%A4%8D%E7%8E%B0/images/image-20230712234657375.png">
+<meta property="og:image" content="http://example.com/images/image-20230712234657375.png">
 <meta property="og:image" content="http://example.com/images/image-20230712234711842.png">
 <meta property="og:image" content="http://example.com/images/image-20230712234834668.png">
 <meta property="og:image" content="http://example.com/images/image-20230712234757065.png">
@@ -34,10 +34,10 @@
 <meta property="og:image" content="http://example.com/images/image-20230712235841948.png">
 <meta property="og:image" content="http://example.com/images/image-20230713002553150.png">
 <meta property="article:published_time" content="2023-07-12T15:25:09.000Z">
-<meta property="article:modified_time" content="2023-07-12T16:32:21.677Z">
+<meta property="article:modified_time" content="2023-07-12T16:32:48.801Z">
 <meta property="article:author" content="John Doe">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:image" content="http://example.com/2023/07/12/nopac%E5%A4%8D%E7%8E%B0/images/image-20230712234657375.png">
+<meta name="twitter:image" content="http://example.com/images/image-20230712234657375.png">
 
 
 <link rel="icon" href="/img/avatar.jpg">
@@ -491,7 +491,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2023-07-13 00:32:21'>2023-07-12 23:25</time>
+            Created At : <time class="date" title='Updated At: 2023-07-13 00:32:48'>2023-07-12 23:25</time>
         
     </div>
     <div class="article-meta">
@@ -578,7 +578,7 @@
 <p>5、使用之前获取到的TGT向域控发起S4U2Self请求服务票据—-&gt;CVE-2021-42287</p>
 <p>6、使用获取到的票据访问到域控主机，后续便可以DCSync获取到域内hash。</p>
 <h3 id="第一问：什么是sAMAccountName？"><a href="#第一问：什么是sAMAccountName？" class="headerlink" title="第一问：什么是sAMAccountName？"></a>第一问：什么是sAMAccountName？</h3><p>听这个漏洞的名字，我们就可以得知是sAMAccountName欺骗，那么先了解一下什么是sAMAccountName：</p>
-<p>在Active Directory 域中每一个用户即是一个对象，每个对象都具有各种各样的属性，其中就包括姓名，创建时间，邮箱地址等关于这个用户的信息，而每个域用户的用户名对应的属性值便为userPrincipalName 和 sAMAccountName 。那为什么是两个呢？因为在Windows 2000之前使用的用户名是sAMAccountName，则在Windows 2000之后出现了新的属性UserPrincipalName(缩写UPN)，它也可以用来登陆到AD域主机上，这两个现在都可以作为登陆用户名使用。我们可以连接ldap进行查看域用户haha的sAMAccountName值为haha，平时常使用域名\用户名的格式，UserPrincipalName值为<a href="mailto:&#104;&#97;&#x68;&#97;&#x40;&#116;&#x65;&#x73;&#x74;&#x2e;&#x63;&#111;&#x6d;">&#104;&#97;&#x68;&#97;&#x40;&#116;&#x65;&#x73;&#x74;&#x2e;&#x63;&#111;&#x6d;</a>为用户名@域名的格式。<br><img src="./images/image-20230712234657375.png" alt="image-20230712234657375"><br>根据挖掘这个漏洞作者的思路来说：首先我们需要创建一个机器账号，默认情况下普通域用户可以创建10个域机器账号，对应的是域内MachineAccountQuota (MAQ) 属性。<br>get-addomain | select -exp DistinguishedName | get-adobject -prop ‘ms-DS-MachineAccountQuota’ | select -exp ms-DS-MachineAccountQuota<br><img src="/images/image-20230712234711842.png" alt="image-20230712234711842"></p>
+<p>在Active Directory 域中每一个用户即是一个对象，每个对象都具有各种各样的属性，其中就包括姓名，创建时间，邮箱地址等关于这个用户的信息，而每个域用户的用户名对应的属性值便为userPrincipalName 和 sAMAccountName 。那为什么是两个呢？因为在Windows 2000之前使用的用户名是sAMAccountName，则在Windows 2000之后出现了新的属性UserPrincipalName(缩写UPN)，它也可以用来登陆到AD域主机上，这两个现在都可以作为登陆用户名使用。我们可以连接ldap进行查看域用户haha的sAMAccountName值为haha，平时常使用域名\用户名的格式，UserPrincipalName值为<a href="mailto:&#x68;&#97;&#x68;&#97;&#x40;&#116;&#x65;&#115;&#x74;&#x2e;&#x63;&#x6f;&#x6d;">&#x68;&#97;&#x68;&#97;&#x40;&#116;&#x65;&#115;&#x74;&#x2e;&#x63;&#x6f;&#x6d;</a>为用户名@域名的格式。<br><img src="/images/image-20230712234657375.png" alt="image-20230712234657375"><br>根据挖掘这个漏洞作者的思路来说：首先我们需要创建一个机器账号，默认情况下普通域用户可以创建10个域机器账号，对应的是域内MachineAccountQuota (MAQ) 属性。<br>get-addomain | select -exp DistinguishedName | get-adobject -prop ‘ms-DS-MachineAccountQuota’ | select -exp ms-DS-MachineAccountQuota<br><img src="/images/image-20230712234711842.png" alt="image-20230712234711842"></p>
 <p>那么便有了新的问题：</p>
 <h3 id="第二问：为什么这里需要一个机器账号，而不是一个普通域用户？"><a href="#第二问：为什么这里需要一个机器账号，而不是一个普通域用户？" class="headerlink" title="第二问：为什么这里需要一个机器账号，而不是一个普通域用户？"></a>第二问：为什么这里需要一个机器账号，而不是一个普通域用户？</h3><p>这里我理解的是因为我们手动创建了域机器账号，便对该机器账号有WriteProperty权限</p>
 <p><img src="/images/image-20230712234834668.png" alt="image-20230712234834668"></p>
